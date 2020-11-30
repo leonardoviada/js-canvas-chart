@@ -3,6 +3,7 @@ const q = document.getElementById('q');
 
 const btnCarica = document.getElementById('btnCarica');
 const btnSalva = document.getElementById('btnSalva');
+const btnDisegna = document.getElementById('btnDisegna');
 
 const ss = window.sessionStorage;
 
@@ -20,8 +21,8 @@ const validaCampi = () => {
     ret--;
   } else {
     m.classList.remove('is-invalid');
+    m.classList.add('is-valid');
     erroreM.innerText = '';
-    ret++;
   }
 
   if (!q.value) {
@@ -30,15 +31,15 @@ const validaCampi = () => {
     ret--;
   } else {
     q.classList.remove('is-invalid');
+    q.classList.add('is-valid');
     erroreQ.innerText = '';
-    ret++;
   }
 
   return ret;
 };
 
 
-const pulisciCanvas = ctx => {
+const pulisciCanvas = () => {
   window.location.reload(false);
 };
 
@@ -85,6 +86,7 @@ const disegnaCanvas = () => {
   disegnaFunzione(ctx, m.value * 1, q.value * 1);
 
   btnSalva.disabled = false;
+  btnDisegna.disabled = true;
 };
 
 
@@ -101,7 +103,13 @@ const caricaDati = () => {
   m.value = ss.getItem('m');
   q.value = ss.getItem('q');
 
-  validaCampi();
+  if (!validaCampi()) {
+    m.classList.remove('is-invalid');
+    q.classList.remove('is-invalid');
+  }
+
+  m.classList.add('is-valid');
+  q.classList.add('is-valid');
 
   btnCarica.disabled = true;
 };
