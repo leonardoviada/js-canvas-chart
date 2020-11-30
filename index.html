@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Verifica JS</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/5cea2e2114.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container">
+
+    <div class="jumbotron my-4">
+        <h4>
+            Disegno Grafico
+        </h4>
+    </div>
+
+    <form>
+        <div class="form-group">
+            <label> <strong><em>m</em></strong> </label>
+            <input type="number" class="form-control form-control-sm" id="m" name="m">
+            <small class="text-danger" id="erroreM"></small>
+        </div>
+        <div class="form-group">
+            <label> <strong><em>q</em></strong> </label>
+            <input type="number" class="form-control form-control-sm" id="q" name="q">
+            <small class="text-danger" id="erroreQ"></small>
+        </div>
+    </form>
+
+    <button class="btn btn-sm btn-primary" id="btnDisegna"><i class="fas fa-draw-polygon"></i> Disegna</button>
+    <button class="btn btn-sm btn-light" id="btnClear">Pulisci</button>
+    <span class="mx-1">|</span>
+    <button class="btn btn-sm btn-secondary" id="btnSalva" disabled><i class="far fa-save"></i> Salva Dati</button>
+    <button class="btn btn-sm btn-secondary" id="btnCarica"><i class="fas fa-cloud-upload-alt"></i> Carica Dati</button>
+
+    <hr class="my-3">
+
+    <canvas id="cnvGrafico" width="400" height="400" class="my-2 mx-auto">
+        Il tuo browser non supporta la funzionalità canvas
+    </canvas>
+
+</div>
+<script src="app.js"></script>
+</body>
+</html>
