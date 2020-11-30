@@ -60,39 +60,33 @@ const disegnaTestoSuCartesiano = (ctx, x, y, text) => {
 };
 
 const disegnaCanvas = () => {
-    if (validaCampi() < 0)
-      return -1;
+  if (validaCampi() < 0)
+    return -1;
 
 
-    console.log('disegno...');
+  console.log('disegno...');
 
-    const c = document.getElementById('cnvGrafico');
-    const ctx = c.getContext('2d');
+  const c = document.getElementById('cnvGrafico');
+  const ctx = c.getContext('2d');
 
-    ctx.translate(200, 200);
+  ctx.translate(200, 200);
 
-    ctx.beginPath();
-    ctx.moveTo(-200, 0);
-    ctx.lineTo(200, 0);
-    ctx.stroke();
-    ctx.moveTo(0, -200);
-    ctx.lineTo(0, 200);
-    ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(-200, 0);
+  ctx.lineTo(200, 0);
+  ctx.stroke();
+  ctx.moveTo(0, -200);
+  ctx.lineTo(0, 200);
+  ctx.stroke();
 
-    ctx.font = '12px Arial';
-    ctx.fillText('x', 180, -10);
+  ctx.font = '12px Arial';
 
-    ctx.fillText('y', 10, -180);
+  disegnaTestoSuCartesiano(ctx, -200, -200, `m=${ m.value } q=${ q.value }`);
+  disegnaFunzione(ctx, m.value * 1, q.value * 1);
 
-    ctx.fillRect(-100, -100, 4, 4);
+  btnSalva.disabled = false;
+};
 
-
-    disegnaTestoSuCartesiano(ctx, -200, -200, `m=${ m.value } q=${ q.value }`);
-    disegnaFunzione(ctx, m.value * 1, q.value * 1);
-
-    btnSalva.disabled = false;
-  }
-;
 
 const salvaDati = () => {
   console.log('salvo...');
@@ -106,6 +100,8 @@ const caricaDati = () => {
 
   m.value = ss.getItem('m');
   q.value = ss.getItem('q');
+
+  validaCampi();
 
   btnCarica.disabled = true;
 };
